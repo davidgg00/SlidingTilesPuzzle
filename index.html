@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sliding Titles David Guisado</title>
+    <style>
+        body {
+            height: 98vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url("img/fondo.jpg");
+            background-size: 100%;
+        }
+
+        #tablero {
+            background-color: white;
+            border: 1px solid black;
+            height: 90%;
+            width: 50%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            box-shadow: black 5px 5px;
+        }
+
+        #tablero img {
+            width: 33%;
+            height: 33%;
+        }
+
+        @media screen and (max-width: 700px) {
+            #tablero {
+                width: 80%;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            #tablero {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="juego.js"></script>
+    <script>
+        window.onload = function () {
+            let tablero = new Tablero(document.getElementById("tablero"));
+            tablero.crearTablero();
+
+            let imagenes = document.getElementsByTagName("img");
+            for (imagen of imagenes) {
+                imagen.addEventListener("click", function (evento) {
+                    tablero.moverCasilla(this);
+                })
+            }
+        }
+    </script>
+    <div id="tablero"></div>
+</body>
+
+</html>
